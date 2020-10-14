@@ -5,7 +5,6 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.netease.nimlib.sdk.SDKOptions;
-import com.netease.nimlib.sdk.mixpush.MixPushConfig;
 
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
  */
 public class FlutterNIMSDKOptionConfig {
     
-    public static SDKOptions getSDKOptions(Context context, String appKey, MixPushConfig mixPushConfig) {
+    public static SDKOptions getSDKOptions(Context context, String appKey) {
         SDKOptions options = new SDKOptions();
 
         options.appKey = appKey;
@@ -49,8 +48,6 @@ public class FlutterNIMSDKOptionConfig {
 
         // 打开消息撤回未读数-1的开关
         options.shouldConsiderRevokedMessageUnreadCount = true;
-
-        options.mixPushConfig = mixPushConfig;
 
         return options;
     }
