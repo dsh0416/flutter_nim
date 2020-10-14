@@ -51,8 +51,6 @@ public class FlutterNIMHelper {
         if (NIMUtil.isMainProcess(context)) {
             // 注册自定义消息附件解析器
             NIMClient.getService(MsgService.class).registerCustomAttachmentParser(new FlutterNIMCustomAttachParser());
-
-            setMessageNotify(true);
         }
     }
 
