@@ -16,7 +16,6 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'http://developer.huawei.com/repo' }
     }
 }
 
@@ -32,9 +31,9 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-    compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+
+    packagingOptions {
+        exclude 'assets/sm2/r.jks'
     }
 }
 
