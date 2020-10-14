@@ -93,11 +93,6 @@ class FlutterNIM {
     String appKey = "",
     String apnsCername = "",
     String apnsCernameDevelop = "",
-    String xmAppId = "",
-    String xmAppKey = "",
-    String xmCertificateName = "",
-    String hwCertificateName = "",
-    String vivoCertificateName = "",
     String imAccount = "",
     String imToken = "",
   }) async {
@@ -105,11 +100,6 @@ class FlutterNIM {
       "appKey": appKey,
       "apnsCername": apnsCername,
       "apnsCernameDevelop": apnsCernameDevelop,
-      "xmAppId": xmAppId,
-      "xmAppKey": xmAppKey,
-      "xmCertificateName": xmCertificateName,
-      "hwCertificateName": hwCertificateName,
-      "vivoCertificateName": vivoCertificateName,
       "imAccount": imAccount,
       "imToken": imToken,
     });

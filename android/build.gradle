@@ -32,20 +32,20 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
     // 添加网易云信依赖。注意，版本号必须一致。
     // 基础功能 (必需)
-    api 'com.netease.nimlib:basesdk:7.2.0'
+    api 'com.netease.nimlib:basesdk:7.7.1'
     // 聊天室需要
-    api 'com.netease.nimlib:chatroom:7.2.0'
+    api 'com.netease.nimlib:chatroom:7.7.1'
     // 全文检索服务需要
-    api 'com.netease.nimlib:lucene:7.2.0'
+    api 'com.netease.nimlib:lucene:7.7.1'
     // 小米、华为、魅族、fcm 推送
-    api 'com.netease.nimlib:push:7.2.0'
-    // 华为
-    api 'com.huawei.android.hms:push:2.6.1.301'
-    api files('libs/MiPush_SDK_Client_3_6_19.jar')
-    api files('libs/vivopushsdk_v2.3.4.jar')
+    api 'com.netease.nimlib:push:7.7.1'
 }
