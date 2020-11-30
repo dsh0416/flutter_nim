@@ -87,6 +87,7 @@ public class FlutterNIMHelper {
 
         NIMClient.getService(AuthService.class).login(info)
                 .setCallback(callback);
+        NIMClient.toggleNotification(boolean true);
     }
 
     private static LoginInfo getLoginInfo(String account, String token) {
