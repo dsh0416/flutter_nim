@@ -10,6 +10,7 @@ import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.ResponseCode;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
+import com.netease.nimlib.sdk.mixpush.MixPushService;
 import com.netease.nimlib.sdk.msg.MsgService;
 import com.netease.nimlib.sdk.msg.MsgServiceObserve;
 import com.netease.nimlib.sdk.msg.model.CustomNotification;
@@ -51,6 +52,7 @@ public class FlutterNIMHelper {
         if (NIMUtil.isMainProcess(context)) {
             // 注册自定义消息附件解析器
             NIMClient.getService(MsgService.class).registerCustomAttachmentParser(new FlutterNIMCustomAttachParser());
+            setMessageNotify(true);
         }
     }
 
@@ -131,4 +133,39 @@ public class FlutterNIMHelper {
             }
         }
     };
+
+     /**
+     * **************************** 推送 ***********************************
+     */
+    private static void setMessageNotify(final boolean checkState) {
+        // 如果接入第三方推送（小米），则同样应该设置开、关推送提醒
+        // 如果关闭消息提醒，则第三方推送消息提醒也应该关闭。
+        // 如果打开消息提醒，则同时打开第三方推送消息提醒。
+        NIMClient.getService(MixPushService.class).enable(checkState).setCallback(new RequestCallback<Void>() {
+            @Override
+            public void onSuccess(Void param) {
+//                Toast.makeText(SettingsActivity.this, R.string.user_info_update_success, Toast.LENGTH_SHORT).show();
+//                notificationItem.setChecked(checkState);
+//                setToggleNotification(checkState);
+            }
+
+            @Override
+            public void onFailed(int code) {
+//                notificationItem.setChecked(!checkState);
+                // 这种情况是客户端不支持第三方推送
+                if (code == ResponseCode.RES_UNSUPPORT) {
+                } else if (code == ResponseCode.RES_EFREQUENTLY) {
+//                    Toast.makeText(SettingsActivity.this, R.string.operation_too_frequent, Toast.LENGTH_SHORT).show();
+                } else {
+//                    Toast.makeText(SettingsActivity.this, R.string.user_info_update_failed, Toast.LENGTH_SHORT).show();
+                }
+//                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onException(Throwable exception) {
+
+            }
+        });
+    }
 }
